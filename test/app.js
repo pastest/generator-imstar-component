@@ -12,17 +12,17 @@ describe('generator-imstar-component:app', function () {
         name: 'm-test',
         author: 'shirlyzhang',
         es6lint: true
-      })
-      .toPromise();
+      });
   });
 
   it('creates files', function () {
     assert.file([
-      'packages/m-test/index.js',
-      'packages/m-test/package.json',
-      'packages/m-test/README.md',
-      'packages/m-test/.eslintrc.js',
-      'packages/m-test/test/index.js'
+      'packages/star-m-test/index.js',
+      'packages/star-m-test/package.json',
+      'packages/star-m-test/README.md',
+      'packages/star-m-test/.eslintrc.js',
+      'packages/star-m-test/test/index.js',
+      'packages/star-m-test/src/MTest.js'
     ]);
   });
 
