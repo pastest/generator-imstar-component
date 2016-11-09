@@ -1,6 +1,6 @@
 // @require './style/index.scss'
 
-import <%=upperName%> from './lib/<%=upperName%>';
+import <%=upperName%> from './src/<%=upperName%>';
 
 export default <%=upperName%>;
 

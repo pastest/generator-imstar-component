@@ -1,0 +1,13 @@
+{
+  "name": "<%=fullName%>",
+  "version": "0.0.1",
+  "title": "<%=fullName%>",
+  "description": "<%=fullName%>",
+  "node_version": ">= 4.2.0",
+  "repository": {
+    "type": "git",
+    "url": "http://git.code.oa.com/imweb-category/category_test.git"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}

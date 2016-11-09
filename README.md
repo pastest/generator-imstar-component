@@ -1,5 +1,5 @@
-# generator-imui-component [![NPM version](https://img.shields.io/npm/v/generator-imui-component.svg)](https://www.npmjs.com/package/generator-imui-component) [![Build Status](https://travis-ci.org/coolriver/generator-imui-component.svg?branch=master)](https://travis-ci.org/coolriver/generator-imui-component)
-> yeoman generator插件，用于生成IMUI组件
+# generator-imstar-component [![NPM version](https://img.shields.io/npm/v/generator-imstar-component.svg)](https://www.npmjs.com/package/generator-imstar-component) [![Build Status](https://travis-ci.org/pastest/generator-imstar-component.svg?branch=master)](https://travis-ci.org/pastest/generator-imstar-component)
+> yeoman generator插件，用于生成IMStar组件
 
 ## Installation
 
@@ -7,7 +7,7 @@
 
 ```bash
 tnpm install --save-dev yo
-tnpm install --save-dev generator-imui-component
+tnpm install --save-dev generator-imstar-component
 ```
 
 package.json中增加add命令:
@@ -17,7 +17,7 @@ package.json中增加add命令:
 
 {
   scripts: {
-    add: "yo imui-component"
+    add: "yo imstar-component"
   }
 }
 ```

@@ -6,6 +6,7 @@ const moment = require('moment');
 const path = require('path');
 const getName = require('imweb-git-user-name');
 const validation = require('../../lib/validation');
+const namePre = 'star-';
 
 function hyphenToCamel(hyphen) {
   const toUpper = function (match, letter) {
@@ -18,7 +19,7 @@ function hyphenToCamel(hyphen) {
 
 module.exports = yeoman.Base.extend({
   initializing: function () {
-    this.distPath = path.resolve(this.destinationPath(`components/`));
+    this.distPath = path.resolve(this.destinationPath(`packages/`));
   },
   prompting: function () {
     this.userName = getName() || getName(true);
@@ -27,14 +28,14 @@ module.exports = yeoman.Base.extend({
       {
         type: 'input',
         name: 'name',
-        message: 'Input the name of the component:',
+        message: 'Input the name of the package:',
         validate: v => {
           if (!validation.isHyphen(v)) {
-            return 'Must input hyphen name(eg. comp-name, compname, compname2)';
+            return 'Must input hyphen name(eg. packname, m-packname)';
           }
 
-          if (validation.nameConflict(v, this.distPath)) {
-            return `component ${v} has already exists, please create a new component`;
+          if (validation.nameConflict(`${namePre}${v}`, this.distPath)) {
+            return `package ${namePre}${v} has already exists, please create a new package`;
           }
 
           return true;
@@ -43,7 +44,7 @@ module.exports = yeoman.Base.extend({
       {
         type: 'input',
         name: 'author',
-        message: 'Input the author of the component:',
+        message: 'Input the author of the package:',
         validate: v => {
           if (validation.notEmpty(v)) {
             return true;
@@ -57,9 +58,9 @@ module.exports = yeoman.Base.extend({
       },
       {
         type: 'confirm',
-        name: 'stateless',
-        message: 'Want to use stateless component?',
-        default: false
+        name: 'es6lint',
+        message: 'Is this package use es6?',
+        default: true
       }
     ];
 
@@ -67,6 +68,7 @@ module.exports = yeoman.Base.extend({
       // To access props later use this.props.someAnswer;
       this.props = props;
       this.props.upperName = hyphenToCamel(this.props.name);
+      this.props.fullName = `${namePre}${this.props.name}`;
       this.props.date = moment().format('YYYY-MM-DD');
 
       if (!this.props.author) {
@@ -78,18 +80,13 @@ module.exports = yeoman.Base.extend({
   writing: function () {
     this.fs.copyTpl(
       this.templatePath('**/*'),
-      path.resolve(this.distPath, `${this.props.name}`),
+      path.resolve(this.distPath, `${this.props.fullName}`),
       this.props
-    );
-
-    this.fs.move(
-      path.resolve(this.distPath, `${this.props.name}/lib/$upperName.jsx`),
-      path.resolve(this.distPath, `${this.props.name}/lib/${this.props.upperName}.jsx`)
     );
   },
 
   end: function () {
-    this.log(`create component ${chalk.green(this.props.name)} success!`);
-    this.log(`component loacated in dir: ${chalk.green(path.resolve(this.distPath, `${this.props.name}`))}`);
+    this.log(`create package ${chalk.green(this.props.fullName)} success!`);
+    this.log(`package loacated in dir: ${chalk.green(path.resolve(this.distPath, `${this.props.fullName}`))}`);
   }
 });
