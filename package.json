@@ -1,0 +1,46 @@
+{
+  "name": "generator-imui-component",
+  "version": "0.3.3",
+  "description": "yeoman generator of imui component",
+  "homepage": "https://github.com/coolriver/generator-imui-component#readme",
+  "author": "coolriver",
+  "files": [
+    "generators",
+    "lib"
+  ],
+  "main": "index.js",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "scripts": {
+    "test": " mocha 'test/*.js' --timeout 30000",
+    "prepublish": "gulp prepublish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coolriver/generator-imui-component.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coolriver/generator-imui-component/issues"
+  },
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "imweb-git-user-name": "^0.1.0",
+    "yeoman-generator": "^0.23.0",
+    "yosay": "^1.0.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-coveralls": "^0.1.0",
+    "gulp-exclude-gitignore": "^1.0.0",
+    "gulp-istanbul": "^1.0.0",
+    "gulp-line-ending-corrector": "^1.0.1",
+    "gulp-mocha": "^2.0.0",
+    "gulp-nsp": "^2.1.0",
+    "gulp-plumber": "^1.0.0",
+    "moment": "^2.15.0",
+    "yeoman-assert": "^2.0.0",
+    "yeoman-test": "^1.0.0"
+  }
+}
