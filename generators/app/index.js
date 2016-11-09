@@ -8,13 +8,17 @@ const getName = require('imweb-git-user-name');
 const validation = require('../../lib/validation');
 const namePre = 'star-';
 
-function hyphenToCamel(hyphen) {
+function hyphenToCamel(hyphen, firstUpper) {
   const toUpper = function (match, letter) {
     return letter.toUpperCase();
   };
 
-  return hyphen.replace(/-(\w)/g, toUpper) // 中划后字母大写
+  if (firstUpper) {
+    return hyphen.replace(/-(\w)/g, toUpper) // 中划后字母大写
     .replace(/^(\w)/g, toUpper); // 首字母大写
+  } else {
+    return hyphen.replace(/-(\w)/g, toUpper);
+  }
 }
 
 module.exports = yeoman.Base.extend({
@@ -67,7 +71,8 @@ module.exports = yeoman.Base.extend({
     return this.prompt(prompts).then(function (props) {
       // To access props later use this.props.someAnswer;
       this.props = props;
-      this.props.upperName = hyphenToCamel(this.props.name);
+      this.props.lowerName = hyphenToCamel(this.props.name.replace('m-', ''), false);
+      this.props.upperName = hyphenToCamel(this.props.name.replace('m-', ''), true);
       this.props.fullName = `${namePre}${this.props.name}`;
       this.props.date = moment().format('YYYY-MM-DD');
 
@@ -82,6 +87,11 @@ module.exports = yeoman.Base.extend({
       this.templatePath('**/*'),
       path.resolve(this.distPath, `${this.props.fullName}`),
       this.props
+    );
+
+    this.fs.move(
+      path.resolve(this.distPath, `${this.props.fullName}/lib/$lowerName.js`),
+      path.resolve(this.distPath, `${this.props.fullName}/lib/${this.props.lowerName}.js`)
     );
   },
 

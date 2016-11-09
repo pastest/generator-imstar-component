@@ -22,7 +22,7 @@ describe('generator-imstar-component:app', function () {
       'packages/star-m-test/README.md',
       'packages/star-m-test/.eslintrc.js',
       'packages/star-m-test/test/index.js',
-      'packages/star-m-test/src/MTest.js'
+      'packages/star-m-test/src/test.js'
     ]);
   });
 
