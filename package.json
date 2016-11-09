@@ -1,6 +1,6 @@
 {
   "name": "generator-imstar-component",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "yeoman generator of imstar component",
   "homepage": "https://github.com/pastest/generator-imstar-component#readme",
   "author": "shirlyzhang",
