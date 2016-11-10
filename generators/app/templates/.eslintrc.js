@@ -43,7 +43,7 @@ if (<%=es6lint%>) {
   };
 } else {
   eslintrc = {
-    extends: ['eslint-config-airbnb'],
+    extends: 'eslint:recommended',
     env: {
       browser: true,
       node: true,
@@ -66,6 +66,9 @@ if (<%=es6lint%>) {
     rules: {
       'curly': [2, 'all'],
       'func-names': 0,
+      'import/no-unresolved': 0,
+      'no-param-reassign': 0,
+      'no-return-assign': 0,
       'max-len': [2, {
         'code': 120
       }],
