@@ -1,5 +1,5 @@
 {
-  "name": "<%=fullName%>",
+  "name": "@tencent/<%=fullName%>",
   "version": "0.0.1",
   "title": "<%=fullName%>",
   "description": "<%=fullName%>",
