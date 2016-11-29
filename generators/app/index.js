@@ -93,6 +93,11 @@ module.exports = yeoman.Base.extend({
       path.resolve(this.distPath, `${this.props.fullName}/src/$lowerName.js`),
       path.resolve(this.distPath, `${this.props.fullName}/src/${this.props.lowerName}.js`)
     );
+
+    this.fs.move(
+      path.resolve(this.distPath, `${this.props.fullName}/eslintrc.js`),
+      path.resolve(this.distPath, `${this.props.fullName}/.eslintrc.js`)
+    );
   },
 
   end: function () {
